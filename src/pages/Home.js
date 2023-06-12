@@ -26,7 +26,7 @@ useEffect(() => {
         </div>
         {/* row */}
         <div className="row tm-content-row">
-          <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+          {/* <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
             <div className="tm-bg-primary-dark tm-block">
               <h2 className="tm-block-title">Latest Hits</h2>
               <canvas id="lineChart" />
@@ -37,7 +37,7 @@ useEffect(() => {
               <h2 className="tm-block-title">Performance</h2>
               <canvas id="barChart" />
             </div>
-          </div>
+          </div> */}
 
           {/* chart example component */}
           <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
