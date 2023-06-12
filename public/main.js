@@ -13,6 +13,7 @@ const createWindow = () => {
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
+      // devTools: true, // Disable the developer tools
     },
   });
 

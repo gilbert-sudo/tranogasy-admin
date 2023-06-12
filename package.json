@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -10,6 +11,7 @@
     "chart.js": "^4.3.0",
     "concurrently": "^8.0.1",
     "cross-env": "^7.0.3",
+    "electron-is-dev": "^2.0.0",
     "faker": "^6.6.6",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
@@ -19,7 +21,8 @@
     "react-router-dom": "^6.11.1",
     "react-scripts": "5.0.1",
     "wait-on": "^7.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "wouter": "^2.11.0"
   },
   "main": "public/main.js",
   "homepage": "./",
@@ -39,7 +42,8 @@
       "dist/**/*",
       "build/**/*",
       "node_modules/**/*",
-      "package.json"
+      "package.json",
+      ".env"
     ],
     "directories": {
       "buildResources": "assets"
@@ -64,9 +68,7 @@
     ]
   },
   "devDependencies": {
-    "@faker-js/faker": "^8.0.2",
     "electron": "^24.2.0",
-    "electron-builder": "^23.6.0",
-    "electron-is-dev": "^2.0.0"
+    "electron-builder": "^23.6.0"
   }
 }
