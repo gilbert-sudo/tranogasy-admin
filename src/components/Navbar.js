@@ -22,7 +22,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-xl">
       <div className="container h-100">
         <a className="navbar-brand" href="index.html">
-          <h1 className="tm-site-title mb-0">Product Admin</h1>
+          <h1 className="tm-site-title mb-0">TranGasy Admin</h1>
         </a>
         <button
           className="navbar-toggler ml-auto mr-0"
