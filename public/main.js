@@ -8,8 +8,8 @@ const isDev = require("electron-is-dev");
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 1000,
-    height: 700,
+    width: 1230,
+    height: 800,
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
@@ -17,9 +17,6 @@ const createWindow = () => {
     },
     icon: path.join(__dirname, "assets/logo.ico"), // Provide the path to your icon file
   });
-
-  // Maximize the window.
-  mainWindow.maximize();
 
   // and load the index.html of the app.
   mainWindow.loadURL(

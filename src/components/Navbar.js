@@ -73,16 +73,16 @@ const Navbar = () => {
               </div>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="products.html">
+              <ActiveLink href="/property">
                 <i className="fas fa-shopping-cart" />
                 Products
-              </a>
+              </ActiveLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="accounts.html">
-                <i className="far fa-user" />
+              <ActiveLink href="/account">
+                <i className="fas fa-user" />
                 Accounts
-              </a>
+              </ActiveLink>
             </li>
             <li className="nav-item dropdown">
               <a

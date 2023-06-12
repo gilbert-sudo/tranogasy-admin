@@ -2,8 +2,10 @@ import { Switch, Route, Router } from "wouter";
 import { useLocationProperty, navigate } from "wouter/use-location";
 
 // all pages
-import Home from "./pages/Home";
+import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
+import PropertyPage from "./pages/PropertyPage";
+import AccountPage from "./pages/AccountPage";
 
 //all components
 import Navbar from "./components/Navbar";
@@ -31,10 +33,16 @@ function App() {
                 <Redirect to="/about" />
               </Route> */}
               <Route path="/">
-                <Home />
+                <HomePage />
               </Route>
               <Route path="/login">
                 <LoginPage />
+              </Route>
+              <Route path="/property">
+                <PropertyPage />
+              </Route>
+              <Route path="/account">
+                <AccountPage />
               </Route>
               <Route path="/:anything*">
                 <center>

@@ -4,7 +4,7 @@ import SalesInformation from "../components/SalesInformation";
 import { useLogin } from "../hooks/useLogin";
 import { useEffect } from "react";
 
-const Home = () => {
+const HomePage = () => {
 const { login } = useLogin();
 
 useEffect(() => {
@@ -15,7 +15,7 @@ useEffect(() => {
 }, [login]);
 
   return (
-    <div className="home">
+    <div className="HomePage">
       <div className="container">
         <div className="row">
           <div className="col">
@@ -480,4 +480,4 @@ useEffect(() => {
   );
 };
 
-export default Home;
+export default HomePage;
