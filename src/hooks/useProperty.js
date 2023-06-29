@@ -1,8 +1,7 @@
 export const useProperty = () => {
   const getProperties = async () => {
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_PROXY}/api/properties`,
+      const response = await fetch('https://tranogasy-api.onrender.com/api/properties',
         {
           method: "GET",
           headers: {
@@ -13,6 +12,7 @@ export const useProperty = () => {
       );
 
       const json = await response.json();
+      console.log(json);
       return json;
     } catch (error) {
       console.log(error);
