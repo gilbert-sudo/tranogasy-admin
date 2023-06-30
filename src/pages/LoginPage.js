@@ -1,15 +1,27 @@
-import { useState } from "react";
-import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { useState, useEffect } from "react";
+import useLogin from "../hooks/useLogin";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { isLoading, error, bootstrap, login } = useLogin();
+  const [errorMessageVisible, setErrorMessageVisible] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(phoneNumber, password);
+    login(email, password);
   };
+
+  useEffect(() => {
+    if (error) {
+      setErrorMessageVisible(true);
+      setTimeout(() => {
+        setErrorMessageVisible(false);
+      }, 4000); // Hide error message after 3 seconds
+    }
+  }, [error]);
+
   return (
     <>
       <style
@@ -25,7 +37,7 @@ const LoginPage = () => {
               <div className="row">
                 <div className="col-12 text-center">
                   <h2 className="tm-block-title mb-4">
-                  Bienvenue admin, Connexion.
+                    Bienvenue admin, Connexion.
                   </h2>
                 </div>
               </div>
@@ -38,16 +50,16 @@ const LoginPage = () => {
                     onSubmit={handleSubmit}
                   >
                     <div className="form-group">
-                      <label htmlFor="username">Phone number</label>
+                      <label htmlFor="username">Username</label>
                       <input
-                        value={phoneNumber}
+                        value={email}
                         name="username"
-                        type="text"
+                        type="email"
                         className="form-control validate"
                         id="username"
                         defaultValue=""
-                        required=""
-                        onChange={(e) => setPhoneNumber(e.target.value)}
+                        required="ON"
+                        onChange={(e) => setEmail(e.target.value)}
                       />
                     </div>
                     <div className="form-group mt-3">
@@ -59,7 +71,7 @@ const LoginPage = () => {
                         className="form-control validate"
                         id="password"
                         defaultValue=""
-                        required=""
+                        required="ON"
                         onChange={(e) => setPassword(e.target.value)}
                       />
                       <div className="d-flex align-items-center">
@@ -82,13 +94,16 @@ const LoginPage = () => {
                       <button
                         type="submit"
                         className="btn btn-primary btn-block text-uppercase"
+                        disabled={isLoading}
                       >
                         Login
                       </button>
                       <br />
-                      <div class="alert alert-danger" role="alert">
-                        This is a danger alert—check it out!
-                      </div>
+                      {errorMessageVisible && error && (
+                        <div className={bootstrap} role="alert">
+                          {error.message}
+                        </div>
+                      )}
                     </div>
                   </form>
                 </div>

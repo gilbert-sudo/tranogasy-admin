@@ -1,15 +1,18 @@
 //import hooks
 import { useProperty } from "../hooks/useProperty";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+
+//import redux store
+import { useSelector } from "react-redux";
 
 const PropertyPage = () => {
   const { getProperties } = useProperty();
-  const [properties, setProperties] = useState(null);
+  const properties = useSelector((state) => state.properties);
 
   useEffect(() => {
     if (!properties) {
       const pageLoader = async () => {
-        setProperties(await getProperties());
+        await getProperties();
       };
       pageLoader();
     }

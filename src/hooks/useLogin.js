@@ -1,9 +1,14 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setUser } from "../redux/redux";
+import { useLocation } from "wouter";
 
 const useLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [bootstrap, setBootstrap] = useState("");
+  const dispatch = useDispatch();
+  const [location, setLocation] = useLocation();
 
   const login = async (email, password) => {
     setIsLoading(true);
@@ -17,7 +22,7 @@ const useLogin = () => {
     }
 
     try {
-      const response = await fetch("/api/admin/login", {
+      const response = await fetch("https://vast-erin-monkey-cape.cyclic.app/api/admins/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -28,7 +33,7 @@ const useLogin = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.message);
+        setError({ message: data.message });
         setBootstrap("alert alert-danger");
         setIsLoading(false);
       }
@@ -36,12 +41,16 @@ const useLogin = () => {
       if (response.ok) {
         // Perform any necessary actions upon successful login
         setBootstrap("alert alert-success");
-        setError("Vous vous êtes connecté(e) maintenant!");
+        setError({ message: data.message, success: true });
+        localStorage.setItem("user", JSON.stringify(data.admin));
+        dispatch(setUser(data.admin));
         setIsLoading(false);
+        console.log(location);
+        setLocation("/account");
       }
     } catch (error) {
       setBootstrap("alert alert-danger");
-      setError("Une erreur s'est produite lors de la tentative de connexion.");
+      setError({ message: error.message });
       setIsLoading(false);
     }
   };

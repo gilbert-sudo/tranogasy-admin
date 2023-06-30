@@ -1,18 +1,7 @@
 import SalesInformation from "../components/SalesInformation";
 
-//import hooks
-import { useLogin } from "../hooks/useLogin";
-import { useEffect } from "react";
 
 const HomePage = () => {
-const { login } = useLogin();
-
-useEffect(() => {
-  const pageLoader = () => {
-    login();
-  };
-  pageLoader();
-}, [login]);
 
   return (
     <div className="HomePage">

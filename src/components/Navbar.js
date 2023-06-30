@@ -1,4 +1,7 @@
 import { Link, useRoute } from "wouter";
+import { useSelector } from "react-redux";
+import { useLogout } from "../hooks/useLogout";
+import { FaPowerOff } from "react-icons/fa";
 /**
  * `Utility components
  */
@@ -18,6 +21,9 @@ const ActiveLink = (props) => {
 };
 
 const Navbar = () => {
+  const user = useSelector((state) => state.user);
+  const { logout } = useLogout();
+
   return (
     <nav className="navbar navbar-expand-xl">
       <div className="container h-100">
@@ -112,11 +118,22 @@ const Navbar = () => {
               </div>
             </li>
           </ul>
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <ActiveLink href="/login">Admin, Logout</ActiveLink>
-            </li>
-          </ul>
+          {!user && (
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <ActiveLink href="/login">Admin, Connexion</ActiveLink>
+              </li>
+            </ul>
+          )}
+          {user && (
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <button class="nav-link btn btn-danger"onClick={logout}>
+                  <FaPowerOff/> Déconnecter
+                </button>
+              </li>
+            </ul>
+          )}
         </div>
       </div>
     </nav>
