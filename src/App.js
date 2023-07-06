@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import PropertyPage from "./pages/PropertyPage";
 import AccountPage from "./pages/AccountPage";
+import ImageUpload from "./pages/ImageUpload";
 
 //all components
 import Navbar from "./components/Navbar";
@@ -43,6 +44,9 @@ function App() {
               </Route>
               <Route path="/account">
                 <AccountPage />
+              </Route>
+              <Route path="/upload">
+                <ImageUpload />
               </Route>
               <Route path="/:anything*">
                 <center>
