@@ -6,7 +6,7 @@ const UserProfile = () => {
           <h2 className="tm-block-title">Change Avatar</h2>
           <div className="tm-avatar-container">
             <img
-              src="img/avatar.png"
+              src="https://ik.imagekit.io/ryxb55mhk/Tranogasy/my-photos"
               alt="Avatar"
               className="tm-avatar img-fluid mb-4"
             />

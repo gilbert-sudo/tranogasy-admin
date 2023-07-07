@@ -12,6 +12,7 @@ const ImageUpload = () => {
 
   const handleUploadSuccess = (response) => {
     setUploadSuccess(true);
+    console.log(response);
     // You can perform additional actions after a successful upload if needed
   };
 
@@ -24,12 +25,14 @@ const ImageUpload = () => {
       <h2>Image Upload</h2>
       <IKContext
         publicKey="public_vlrRA+yMUPV8sLRnpirwSsUA2hw="
-        urlEndpoint="/sary"
-        authenticationEndpoint="http://localhost:3600/auth"
+        urlEndpoint="https://ik.imagekit.io/ryxb55mhk/"
+        authenticationEndpoint="https://vast-erin-monkey-cape.cyclic.app/auth"
       >
         {/* Image upload */}
         <IKUpload
-          fileName="my-upload"
+          fileName="my-photos"
+          folder='Tranogasy'
+          useUniqueFileName={false} 
           onError={handleUploadError}
           onSuccess={handleUploadSuccess}
         />
