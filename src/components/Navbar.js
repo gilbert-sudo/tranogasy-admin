@@ -84,7 +84,7 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <ActiveLink href="/property">
-                <i className="fas fa-shopping-cart" />
+                <i className="fas fa-home" />
                 Propriétés
               </ActiveLink>
             </li>
@@ -118,7 +118,7 @@ const Navbar = () => {
                   className="dropdown-item"
                   to={user ? "/profil" : "/login"}
                 >
-                  Profil
+                  Mon profil
                 </Link>
                 <a className="dropdown-item" href="#">
                   Facturation

@@ -6,7 +6,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import PropertyPage from "./pages/PropertyPage";
 import AccountPage from "./pages/AccountPage";
-import ImageUpload from "./pages/ImageUpload";
+import AvatarUpload from "./components/AvatarUpload";
 import ProfilPage from "./pages/ProfilPage";
 
 //all components
@@ -50,7 +50,7 @@ function App() {
                 <ProfilPage />
               </Route>
               <Route path="/upload">
-                <ImageUpload />
+                <AvatarUpload />
               </Route>
               <Route path="/:anything*">
                 <center>

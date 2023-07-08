@@ -1,14 +1,9 @@
-import React, { useState } from 'react';
-import { IKContext, IKUpload } from 'imagekitio-react';
+import React, { useState } from "react";
+import { IKContext, IKUpload } from "imagekitio-react";
 
-const ImageUpload = () => {
+const AvatarUpload = () => {
   const [uploadSuccess, setUploadSuccess] = useState(false);
   const [uploadError, setUploadError] = useState(null);
-
-  const handleUpload = () => {
-    setUploadError(null);
-    setUploadSuccess(false);
-  };
 
   const handleUploadSuccess = (response) => {
     setUploadSuccess(true);
@@ -21,8 +16,7 @@ const ImageUpload = () => {
   };
 
   return (
-    <div className='form-group'>
-      <h2>Image Upload</h2>
+    <div className="form-group">
       <IKContext
         publicKey="public_vlrRA+yMUPV8sLRnpirwSsUA2hw="
         urlEndpoint="https://ik.imagekit.io/ryxb55mhk/"
@@ -31,10 +25,10 @@ const ImageUpload = () => {
         {/* Image upload */}
         <IKUpload
           fileName="tg-pic"
-          folder='Tranogasy/properties'
+          folder="Tranogasy/properties"
           onError={handleUploadError}
           onSuccess={handleUploadSuccess}
-          className='form-control'
+          className="btn btn-primary btn-block text-uppercase form-control"
         />
       </IKContext>
 
@@ -44,4 +38,4 @@ const ImageUpload = () => {
   );
 };
 
-export default ImageUpload;
+export default AvatarUpload;

@@ -46,7 +46,7 @@ const useLogin = () => {
         dispatch(setUser(data.admin));
         setIsLoading(false);
         console.log(location);
-        setLocation("/account");
+        setLocation("/profil");
       }
     } catch (error) {
       setBootstrap("alert alert-danger");

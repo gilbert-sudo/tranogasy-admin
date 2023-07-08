@@ -1,7 +1,21 @@
 import { useSelector } from "react-redux";
+import { useState } from "react";
+import Swal from "sweetalert2";
+import { ImZoomIn } from "react-icons/im";
+import AvatarUpload from "../components/AvatarUpload";
 
 const ProfilPage = () => {
   const user = useSelector((state) => state.user);
+  const [uploadMode, setUploadMode] = useState(false);
+
+  const handleImageClick = (imageUrl) => {
+    Swal.fire({
+      imageUrl,
+      imageAlt: "Avatar",
+      showConfirmButton: false,
+      showCloseButton: true,
+    });
+  };
 
   return (
     <div className="container mt-4">
@@ -14,14 +28,41 @@ const ProfilPage = () => {
                 src={user.avatar}
                 alt="Avatar"
                 className="tm-avatar img-fluid mb-4"
+                onClick={() => handleImageClick(user.avatar)}
               />
-              <a href="#" className="tm-avatar-delete-link">
-                <i className="far fa-trash-alt tm-product-delete-icon" />
-              </a>
+              <div
+                className="tm-avatar-delete-link"
+                onClick={() => handleImageClick(user.avatar)}
+              >
+                <ImZoomIn className="tm-product-delete-icon" />
+              </div>
             </div>
-            <button className="btn btn-primary btn-block text-uppercase">
-              Changer la photo
-            </button>
+            {uploadMode ? (
+              <>
+                {" "}
+                <AvatarUpload />{" "}
+                <button
+                  onClick={() => setUploadMode(false)}
+                  className="btn btn-danger btn-block text-uppercase"
+                >
+                  Annuler
+                </button>
+              </>
+            ) : (
+              <button
+                onClick={() => {
+                  const confirmed = window.confirm(
+                    "Voulez-vous vraiment changer votre photo de profil ?"
+                  );
+                  if (confirmed) {
+                    setUploadMode(true);
+                  }
+                }}
+                className="btn btn-primary btn-block text-uppercase"
+              >
+                Modifier la photo
+              </button>
+            )}
           </div>
         </div>
         <div className="tm-block-col tm-col-account-settings">
