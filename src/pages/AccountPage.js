@@ -1,9 +1,4 @@
-import UserProfile from "../components/UserProfile";
-import { useSelector } from "react-redux";
-
 const AccountPage = () => {
-const user = useSelector((state) => state.user);
-
   return (
     <div className="container mt-4">
       <div className="row tm-content-row">
@@ -21,8 +16,6 @@ const user = useSelector((state) => state.user);
           </div>
         </div>
       </div>
-      {/* row */}
-      {user && <UserProfile/>}
     </div>
   );
 };

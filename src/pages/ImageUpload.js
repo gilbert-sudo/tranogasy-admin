@@ -21,7 +21,7 @@ const ImageUpload = () => {
   };
 
   return (
-    <div>
+    <div className='form-group'>
       <h2>Image Upload</h2>
       <IKContext
         publicKey="public_vlrRA+yMUPV8sLRnpirwSsUA2hw="
@@ -30,11 +30,11 @@ const ImageUpload = () => {
       >
         {/* Image upload */}
         <IKUpload
-          fileName="my-photos"
-          folder='Tranogasy'
-          useUniqueFileName={false} 
+          fileName="tg-pic"
+          folder='Tranogasy/properties'
           onError={handleUploadError}
           onSuccess={handleUploadSuccess}
+          className='form-control'
         />
       </IKContext>
 

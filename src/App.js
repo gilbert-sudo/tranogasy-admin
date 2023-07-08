@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import PropertyPage from "./pages/PropertyPage";
 import AccountPage from "./pages/AccountPage";
 import ImageUpload from "./pages/ImageUpload";
+import ProfilPage from "./pages/ProfilPage";
 
 //all components
 import Navbar from "./components/Navbar";
@@ -44,6 +45,9 @@ function App() {
               </Route>
               <Route path="/account">
                 <AccountPage />
+              </Route>
+              <Route path="/profil">
+                <ProfilPage />
               </Route>
               <Route path="/upload">
                 <ImageUpload />

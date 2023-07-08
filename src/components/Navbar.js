@@ -1,7 +1,8 @@
-import { Link, useRoute } from "wouter";
+import { Link, useRoute, useLocation } from "wouter";
 import { useSelector } from "react-redux";
 import { useLogout } from "../hooks/useLogout";
 import { FaPowerOff } from "react-icons/fa";
+import { useState } from "react";
 /**
  * `Utility components
  */
@@ -22,6 +23,9 @@ const ActiveLink = (props) => {
 
 const Navbar = () => {
   const user = useSelector((state) => state.user);
+
+  const [location, setLocation] = useLocation();
+
   const { logout } = useLogout();
 
   return (
@@ -47,7 +51,7 @@ const Navbar = () => {
               <ActiveLink href="/">
                 {" "}
                 <i className="fas fa-tachometer-alt" />
-                Dashboard
+                Tableau de bord
                 <span className="sr-only">(current)</span>
               </ActiveLink>
             </li>
@@ -63,36 +67,40 @@ const Navbar = () => {
               >
                 <i className="far fa-file-alt" />
                 <span>
-                  Reports <i className="fas fa-angle-down" />
+                  Rapports <i className="fas fa-angle-down" />
                 </span>
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a className="dropdown-item" href="#">
-                  Daily Report
+                  Rapport journalier
                 </a>
                 <a className="dropdown-item" href="#">
-                  Weekly Report
+                  Rapport hebdomadaire
                 </a>
                 <a className="dropdown-item" href="#">
-                  Yearly Report
+                  Rapport annuel
                 </a>
               </div>
             </li>
             <li className="nav-item">
               <ActiveLink href="/property">
                 <i className="fas fa-shopping-cart" />
-                Products
+                Propriétés
               </ActiveLink>
             </li>
             <li className="nav-item">
               <ActiveLink href="/account">
                 <i className="fas fa-user" />
-                Accounts
+                Comptes
               </ActiveLink>
             </li>
             <li className="nav-item dropdown">
               <a
-                className="nav-link dropdown-toggle"
+                className={
+                  location == "/profil"
+                    ? "nav-link dropdown-toggle active"
+                    : "nav-link dropdown-toggle"
+                }
                 href="#"
                 id="navbarDropdown"
                 role="button"
@@ -102,18 +110,18 @@ const Navbar = () => {
               >
                 <i className="fas fa-cog" />
                 <span>
-                  Settings <i className="fas fa-angle-down" />
+                  Paramètres <i className="fas fa-angle-down" />
                 </span>
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <Link
+                  className="dropdown-item"
+                  to={user ? "/profil" : "/login"}
+                >
+                  Profil
+                </Link>
                 <a className="dropdown-item" href="#">
-                  Profile
-                </a>
-                <a className="dropdown-item" href="#">
-                  Billing
-                </a>
-                <a className="dropdown-item" href="#">
-                  Customize
+                  Facturation
                 </a>
               </div>
             </li>
@@ -128,8 +136,8 @@ const Navbar = () => {
           {user && (
             <ul className="navbar-nav">
               <li className="nav-item">
-                <button class="nav-link btn btn-danger"onClick={logout}>
-                  <FaPowerOff/> Déconnecter
+                <button class="nav-link btn btn-danger" onClick={logout}>
+                  <FaPowerOff /> Déconnecter
                 </button>
               </li>
             </ul>
