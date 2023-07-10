@@ -22,7 +22,7 @@ const useLogin = () => {
     }
 
     try {
-      const response = await fetch("https://vast-erin-monkey-cape.cyclic.app/api/admins/login", {
+      const response = await fetch("http://localhost:3600/api/admins/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

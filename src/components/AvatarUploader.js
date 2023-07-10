@@ -6,7 +6,7 @@ import { setSuccessUploading, setUploadMode } from "../redux/redux";
 import { css } from "@emotion/react";
 import { BarLoader } from "react-spinners";
 
-const AvatarUploader = (user) => {
+const AvatarUploader = ({user}) => {
   const [uploadSuccess, setUploadSuccess] = useState(false);
   const pagination = useSelector((state) => state.pagination);
   const [uploadError, setUploadError] = useState(null);

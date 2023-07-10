@@ -7,7 +7,7 @@ export const useProperty = () => {
 
   const getProperties = async () => {
     try {
-      const response = await fetch('https://vast-erin-monkey-cape.cyclic.app/api/properties',
+      const response = await fetch('http://localhost:3600/api/properties',
         {
           method: "GET",
           headers: {

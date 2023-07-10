@@ -52,7 +52,9 @@ const ProfilPage = () => {
                 <ImZoomIn className="tm-product-delete-icon" />
               </div>
             </div>
-            {pagination[3].uploadMode && <AvatarUploader user={user} />}{" "}
+            {pagination[3].uploadMode && (
+                <AvatarUploader user={user} />
+            )}{" "}
             {!pagination[3].uploadMode && (
               <button
                 onClick={() => {
