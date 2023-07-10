@@ -1,12 +1,18 @@
-import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { setSuccessUploading, setUploadMode } from "../redux/redux";
+
 import Swal from "sweetalert2";
 import { ImZoomIn } from "react-icons/im";
-import AvatarUpload from "../components/AvatarUpload";
+import AvatarUploader from "../components/AvatarUploader";
 
 const ProfilPage = () => {
   const user = useSelector((state) => state.user);
-  const [uploadMode, setUploadMode] = useState(false);
+  const pagination = useSelector((state) => state.pagination);
+  const [errorMessageVisible, setErrorMessageVisible] = useState(false);
+
+  //redux dispatcher
+  const dispatch = useDispatch();
 
   const handleImageClick = (imageUrl) => {
     Swal.fire({
@@ -16,6 +22,15 @@ const ProfilPage = () => {
       showCloseButton: true,
     });
   };
+
+  useEffect(() => {
+    if (pagination[3].successUploading && !pagination[3].uploadMode) {
+      setErrorMessageVisible(true);
+      setTimeout(() => {
+        setErrorMessageVisible(false);
+      }, 4000); // Hide error message after 3 seconds
+    }
+  }, [pagination[3]]);
 
   return (
     <div className="container mt-4">
@@ -37,25 +52,16 @@ const ProfilPage = () => {
                 <ImZoomIn className="tm-product-delete-icon" />
               </div>
             </div>
-            {uploadMode ? (
-              <>
-                {" "}
-                <AvatarUpload />{" "}
-                <button
-                  onClick={() => setUploadMode(false)}
-                  className="btn btn-danger btn-block text-uppercase"
-                >
-                  Annuler
-                </button>
-              </>
-            ) : (
+            {pagination[3].uploadMode && <AvatarUploader user={user} />}{" "}
+            {!pagination[3].uploadMode && (
               <button
                 onClick={() => {
                   const confirmed = window.confirm(
                     "Voulez-vous vraiment changer votre photo de profil ?"
                   );
                   if (confirmed) {
-                    setUploadMode(true);
+                    dispatch(setUploadMode(true));
+                    dispatch(setSuccessUploading(false));
                   }
                 }}
                 className="btn btn-primary btn-block text-uppercase"
@@ -63,6 +69,13 @@ const ProfilPage = () => {
                 Modifier la photo
               </button>
             )}
+            {errorMessageVisible &&
+              pagination[3].successUploading &&
+              !pagination[3].uploadMode && (
+                <div className="alert alert-success mt-1" role="alert">
+                  Téléchargement réussi !
+                </div>
+              )}
           </div>
         </div>
         <div className="tm-block-col tm-col-account-settings">

@@ -55,6 +55,7 @@ const paginationSlice = createSlice({
     { currentPage: 1, totalPage: 0 },
     { itemsPerPage: 2, startIndex: 0, endIndex: 0 },
     { activeLink: "/" },
+    { successUploading: false, uploadMode: false, isUploading: false },
   ],
   reducers: {
     updateCurrentPage: (state, action) => {
@@ -62,6 +63,15 @@ const paginationSlice = createSlice({
     },
     updateActiveLink: (state, action) => {
       state[2].activeLink = action.payload;
+    },
+    setSuccessUploading: (state, action) => {
+      state[3].successUploading = action.payload;
+    },
+    setIsUploading: (state, action) => {
+      state[3].isUploading = action.payload;
+    },
+    setUploadMode: (state, action) => {
+      state[3].uploadMode = action.payload;
     },
     setTotalPage: (state, action) => {
       state[0].totalPage = Math.ceil(action.payload / state[1].itemsPerPage);
@@ -75,6 +85,9 @@ export const {
   setTotalPage,
   setResetAgentInput,
   updateActiveLink,
+  setSuccessUploading,
+  setUploadMode,
+  setIsUploading,
 } = paginationSlice.actions;
 
 //Top50Properties

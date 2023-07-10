@@ -6,11 +6,11 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import PropertyPage from "./pages/PropertyPage";
 import AccountPage from "./pages/AccountPage";
-import AvatarUpload from "./components/AvatarUpload";
 import ProfilPage from "./pages/ProfilPage";
 
 //all components
 import Navbar from "./components/Navbar";
+import AvatarUploader from "./components/AvatarUploader";
 
 // returns the current hash location in a normalized form
 // (excluding the leading '#' symbol)
@@ -50,7 +50,7 @@ function App() {
                 <ProfilPage />
               </Route>
               <Route path="/upload">
-                <AvatarUpload />
+                <AvatarUploader />
               </Route>
               <Route path="/:anything*">
                 <center>
