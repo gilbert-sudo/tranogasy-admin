@@ -1,9 +1,10 @@
-//import hooks
 import { useProperty } from "../hooks/useProperty";
 import { useEffect } from "react";
-
-//import redux store
 import { useSelector } from "react-redux";
+
+
+import PropertyDetails from "../components/PropertyDetails";
+
 
 const PropertyPage = () => {
   const { getProperties } = useProperty();
@@ -25,45 +26,32 @@ const PropertyPage = () => {
           <div className="tm-bg-primary-dark tm-block tm-block-products">
             <div className="tm-product-table-container">
               <table className="table table-hover tm-table-small tm-product-table">
-                <thead>
+                <thead className="sticky-top">
                   <tr>
                     <th scope="col">&nbsp;</th>
-                    <th scope="col">TITRE DE L'ARTICLE</th>
+                    <th scope="col">PHOTO</th>
+                    <th scope="col">N°</th>
+                    <th scope="col">TITRE</th>
                     <th scope="col">ADRESSE</th>
                     <th scope="col">QUARTIER</th>
-                    <th scope="col">PRIX (Ar)</th>
-                    <th scope="col">LOYER (Ar)</th>
-                    <th scope="col">DATE D'ENREGISTREMENT</th>
+                    <th scope="col">PRIX</th>
+                    <th scope="col">LOYER</th>
+                    <th scope="col">DATE</th>
+                    <th scope="col">STATUS</th>
                     <th scope="col">&nbsp;</th>
                   </tr>
                 </thead>
                 <tbody>
                   {properties &&
-                    properties.map((property) => (
-                      <tr>
-                        <th scope="row">
-                          <input type="checkbox" />
-                        </th>
-                        <td className="tm-product-name">{property.title}</td>
-                        <td className="tm-product-name">{property.address}</td>
-                        <td className="tm-product-name">{property.city.quarter}</td>
-                        <td>{property.price}</td>
-                        <td>{property.rent}</td>
-                        <td>28 March 2019</td>
-                        <td>
-                          <a href="#" className="tm-product-delete-link">
-                            <i className="far fa-trash-alt tm-product-delete-icon" />
-                          </a>
-                        </td>
-                      </tr>
+                    properties.map((property, index) => (
+                      <PropertyDetails index={index} property={property} />
                     ))}
                 </tbody>
               </table>
             </div>
-            {/* table container */}
             <a
               href="add-product.html"
-              className="btn btn-primary btn-block text-uppercase"
+              className="btn btn-primary btn-block text-uppercase mt-5"
             >
               Ajouter une nouvelle propriété
             </a>

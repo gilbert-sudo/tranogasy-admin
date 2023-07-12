@@ -208,6 +208,8 @@ button:focus {
   margin-bottom: 0;
 }
 thead {
+  outline: solid 1px #ffffff;
+  outline-offset: -1px;
   background-color: #486177;
   color: #fff;
 }
@@ -358,7 +360,6 @@ thead {
 }
 .table td,
 .table th {
-  border-top: 1px solid #415a70;
   padding: 15px 25px;
   vertical-align: middle;
 }
@@ -437,7 +438,6 @@ input[type="checkbox"]:focus {
 }
 .tm-product-table-container {
   max-height: 465px;
-  margin-bottom: 15px;
   overflow-y: scroll;
 }
 .tm-product-table tr {
@@ -454,7 +454,7 @@ input[type="checkbox"]:focus {
 .tm-product-delete-link {
   padding: 10px;
   border-radius: 50%;
-  background-color: #394e64;
+  background-color: #3a4e64;
   display: inline-block;
   width: 40px;
   height: 40px;

@@ -6,6 +6,9 @@ import Swal from "sweetalert2";
 import { ImZoomIn } from "react-icons/im";
 import AvatarUploader from "../components/AvatarUploader";
 
+//import the default avatar of the user
+import userAvatar from "../img/user-avatar.png";
+
 const ProfilPage = () => {
   const user = useSelector((state) => state.user);
   const pagination = useSelector((state) => state.pagination);
@@ -40,7 +43,7 @@ const ProfilPage = () => {
             <h2 className="tm-block-title">Photo de profil</h2>
             <div className="tm-avatar-container">
               <img
-                src={user.avatar}
+                src={user.avatar ? user.avatar : userAvatar}
                 alt="Avatar"
                 className="tm-avatar img-fluid mb-4"
                 onClick={() => handleImageClick(user.avatar)}

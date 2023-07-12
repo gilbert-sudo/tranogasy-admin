@@ -29,7 +29,7 @@ function App() {
       <Router hook={useHashLocation}>
         <div className="App">
           <Navbar />
-          <main>
+          <main style={{marginTop:"100px"}}>
             <Switch>
               {/* <Route path="/info">
                 <Redirect to="/about" />

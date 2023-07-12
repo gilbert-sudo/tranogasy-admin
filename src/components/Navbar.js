@@ -29,7 +29,7 @@ const Navbar = () => {
   const { logout } = useLogout();
 
   return (
-    <nav className="navbar navbar-expand-xl">
+    <nav className="navbar navbar-expand-xl fixed-top">
       <div className="container h-100">
         <a className="navbar-brand" href="index.html">
           <h1 className="tm-site-title mb-0">TranGasy Admin</h1>
